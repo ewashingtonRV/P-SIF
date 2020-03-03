@@ -7,7 +7,7 @@
   - Simple feature construction technique named **P-SIF: Document Embeddings using Partition Averaging**
 
 ## Notes
-Still a work in progress. Path to data needs to be entered in `Word2Vec.py` and `psif.py` and several lines need to be uncommented. Files are currently set to load previously intialised and saved models. 
+Still a work in progress. Path to data needs to be entered in `Word2Vec.py` and `psif.py` and several lines need to be uncommented. Files are currently set to load previously intialized and saved models. 
 
 ## Run file
 Create word weights
