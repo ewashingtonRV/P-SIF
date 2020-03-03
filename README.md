@@ -4,11 +4,11 @@
 ## Introduction
   - For text classification and information retrieval tasks, text data has to be represented as a fixed dimension vector. 
   - We propose simple feature construction technique named **P-SIF: Document Embeddings using Partition Averaging**
-  - We demonstrate our method through experiments on multi-class classification on 20newsGroup dataset, multi-label text classification on Reuters-21578 dataset, Semantic Textual Similarity Tasks (STS 12-16) and other classification tasks.
 
-## Testing
-There are 3 folders named 20newsGroup, Reuters and STS which contains code related to multi-class classification on 20newsGroup dataset, multi-label classification on Reuters dataset, and Semantic Texual Similarity Task (STS) on 27 datasets.
+## Notes
+Still a work in progress. Path to data needs to be entered in `Word2Vec.py` and `psif.py` and several lines need to be uncommented. Files are currently set to load previously intialised and saved models. 
 
+## Run file
 Create word weights
 ```sh
 $create_wrd_cnt.py
