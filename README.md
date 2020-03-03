@@ -2,7 +2,7 @@
 
 
 ## Introduction
-  - Taken from AAAI 2020: https://vgupta123.github.io/docs/AAAI-GuptaV.3656.pdf
+  - This model was highlighted at AAAI 2020: https://vgupta123.github.io/docs/AAAI-GuptaV.3656.pdf
   - For text classification and information retrieval tasks, text data has to be represented as a fixed dimension vector. 
   - Simple feature construction technique named **P-SIF: Document Embeddings using Partition Averaging**
 
