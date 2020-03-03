@@ -2,8 +2,9 @@
 
 
 ## Introduction
+  - Taken from AAAI 2020: https://vgupta123.github.io/docs/AAAI-GuptaV.3656.pdf
   - For text classification and information retrieval tasks, text data has to be represented as a fixed dimension vector. 
-  - We propose simple feature construction technique named **P-SIF: Document Embeddings using Partition Averaging**
+  - Simple feature construction technique named **P-SIF: Document Embeddings using Partition Averaging**
 
 ## Notes
 Still a work in progress. Path to data needs to be entered in `Word2Vec.py` and `psif.py` and several lines need to be uncommented. Files are currently set to load previously intialised and saved models. 
