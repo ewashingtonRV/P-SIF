@@ -20,7 +20,6 @@ def drange(start, stop, step):
         yield r
         r += step
 
-
 def dictionary_KSVD(num_clusters, word_vectors, idx_name, idx_proba_name):
     # Initalize a ksvd object and use it for clustering.
     aksvd = ApproximateKSVD(n_components=num_clusters)
@@ -36,14 +35,12 @@ def dictionary_KSVD(num_clusters, word_vectors, idx_name, idx_proba_name):
     print("Probabilities of Cluster Assignments Saved...")
     return (idx, idx_proba)
 
-
 def dictionary_read_KSVD(idx_name, idx_proba_name):
     # Loads cluster assignments and probability of cluster assignments.
     idx = joblib.load(idx_name)
     idx_proba = joblib.load(idx_proba_name)
     print("Cluster Model Loaded...")
     return (idx, idx_proba)
-
 
 def get_probability_word_vectors(featurenames, word_centroid_map, num_clusters, word_idf_dict):
     # This function computes probability word-cluster vectors.
@@ -59,7 +56,6 @@ def get_probability_word_vectors(featurenames, word_centroid_map, num_clusters, 
             except:
                 continue
     return prob_wordvecs
-
 
 def weight_building(weight_file, a_weight):
     f = open(weight_file,"rb")
@@ -89,7 +85,6 @@ def create_cluster_vector_and_gwbowv(prob_wordvecs, weight_dict, words, n_comp):
           bag_of_centroids /= norm
       return bag_of_centroids
 
-
 def pca_truncated_svd(X, X_test, n_comp):
     sklearn_pca = PCA(n_components=n_comp, svd_solver='full')
     X_pca = sklearn_pca.fit_transform(X)
@@ -102,7 +97,6 @@ def custom_tokenize(text):
         print('The text to be tokenized is a None type. Defaulting to blank string.')
         text = ''
     return word_tokenize(text)
-
 
 
 if __name__ == '__main__':
@@ -176,9 +170,13 @@ if __name__ == '__main__':
     print("Creating Document Vectors...:", temp_time, "seconds.")
     # Create train and text data.
     y = novant.tag
-    train_data, test_data, y_train, y_test = train_test_split(novant["text"], y, 
-                                                              test_size=0.2, 
-                                                              random_state=42)
+    incides = novant.index
+    train_data, test_data, y_train, y_test, train_indices, test_indices = train_test_split(novant["text"], 
+                                                                                           y, 
+                                                                                           incides,
+                                                                                           test_size=0.2, 
+                                                                                           random_state=42)
+
 
     train = pd.DataFrame({'text': []})
     test = pd.DataFrame({'text': []})
@@ -224,7 +222,11 @@ if __name__ == '__main__':
     np.save(test_gwbowv_name, gwbowv_test)
     y_train.to_csv("./data/y_train.csv", header=True)
     y_test.to_csv("./data/y_test.csv", header=True)
-
+    
+    test_titles_df = novant.iloc[test_indices, :]
+    test_titles_lst = test_titles_df["cfUrl"].tolist()
+    np.savetxt("./data/test_titles_lst.csv", test_titles_lst, delimiter=",", fmt='%s')
+            
     endtime = time.time() - start
     print("SDV created and dumped: ", endtime, "seconds.")
 
